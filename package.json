@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "This is a TBC website.",
   "main": "index.js",
+  "homepage": "https://yuelone.github.io/TBC",
   "scripts": {
     "build": "cross-env HOST=local webpack --config webpack/webpack.dev.config.js",
     "build:prod": "cross-env HOST=prod webpack --config webpack/webpack.prod.config.js",
     "dev": "cross-env HOST=local webpack serve --config webpack/webpack.dev.config.js",
-    "server": "json-server --watch db.json --routes routes.json --port 3090"
+    "server": "json-server --watch db.json --routes routes.json --port 3090",
+    "predeploy": "yarn run build:prod",
+    "deploy": "gh-pages -d build"
   },
   "author": "yuelone",
   "license": "ISC",
@@ -17,6 +20,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "path": "^0.12.7",
     "prettier-eslint": "^15.0.1",
@@ -24,6 +28,7 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
+    "save": "^2.9.0",
     "webpackbar": "^6.0.1"
   },
   "devDependencies": {
