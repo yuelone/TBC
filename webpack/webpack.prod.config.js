@@ -1,66 +1,65 @@
-const webpack = require('webpack')
-const fs = require('fs')
-const path = require('path')
-const { merge } = require('webpack-merge')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin') // 壓縮 js
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // 壓縮 css
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require("webpack");
+const fs = require("fs");
+const path = require("path");
+const { merge } = require("webpack-merge");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin"); // 壓縮 js
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"); // 壓縮 css
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const baseConfig = require('./webpack.base.config')
+const baseConfig = require("./webpack.base.config");
 
 const cleanOptions = {
   root: __dirname,
   verbose: false,
   dry: false,
-}
+};
 
-const publicPath = '/reactHighspeedrail/'
-const appDirectory = fs.realpathSync(process.cwd())
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
+const publicPath = "/reactHighspeedrail/";
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 module.exports = merge(baseConfig, {
-  mode: 'production',
+  mode: "production",
   output: {
-    path: resolveApp('dist'),
-    // filename: 'assets/js/[name].[hash:4].js',
-    chunkFilename: 'assets/js/[name].[hash:4].chunk.js',
+    path: resolveApp("dist"),
+    chunkFilename: "assets/js/[name].[hash:4].chunk.js",
     publicPath,
   },
 
   optimization: {
     splitChunks: {
       hidePathInfo: true,
-      chunks: 'all',
+      chunks: "all",
       minSize: 30000,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       cacheGroups: {
         commons: {
-          chunks: 'all',
-          name: 'commons',
+          chunks: "all",
+          name: "commons",
           minChunks: 2,
           priority: 1,
         },
         reactBase: {
-          chunks: 'initial',
+          chunks: "initial",
           test: /[\\/]node_modules[\\/]react*|redux*|prop-types[\\/]/,
           priority: 10,
         },
         bootstrapBase: {
-          chunks: 'initial',
+          chunks: "initial",
           test: /[\\/]node_modules[\\/](bootstrap|jquery|)[\\/]/,
           priority: 10,
         },
         formControl: {
-          chunks: 'initial',
+          chunks: "initial",
           test: /[\\/]node_modules[\\/](formik|yup|react-select)[\\/]/,
           priority: 15,
         },
         utils: {
-          chunks: 'initial',
+          chunks: "initial",
           test: /[\\/]node_modules[\\/]lodash*[\\/]/,
           priority: 10,
         },
@@ -105,14 +104,14 @@ module.exports = merge(baseConfig, {
       // },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'thread-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, "thread-loader", "css-loader"],
       },
       {
         test: /\.(sa|sc)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'thread-loader',
+            loader: "thread-loader",
             // loaders with equal options will share worker pools
             options: {
               // set to 2 to avoid sass-loader problem
@@ -121,15 +120,15 @@ module.exports = merge(baseConfig, {
               workerParallelJobs: 2,
             },
           },
-          'css-loader',
-          'sass-loader',
+          "css-loader",
+          "sass-loader",
         ],
       },
     ],
   },
 
   performance: {
-    hints: 'warning',
+    hints: "warning",
   },
 
   plugins: [
@@ -139,8 +138,8 @@ module.exports = merge(baseConfig, {
     new CleanWebpackPlugin(cleanOptions),
     new HtmlWebPackPlugin({
       inject: true,
-      template: './public/index.html',
-      filename: './index.html',
+      template: "./public/index.html",
+      filename: "./index.html",
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -155,8 +154,8 @@ module.exports = merge(baseConfig, {
       },
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[name].[hash:4].css',
+      filename: "assets/css/[name].[hash:4].css",
     }),
     new OptimizeCSSAssetsPlugin(),
   ],
-})
+});

@@ -14,7 +14,6 @@ const HOST = "localhost";
 const PORT = 3009;
 
 module.exports = merge(baseConfig, {
-  // entry: ['@babel/polyfill', './src/index.js'],
   mode: "production",
   performance: {
     hints: false,
@@ -56,8 +55,6 @@ module.exports = merge(baseConfig, {
             options: {
               importLoaders: 1,
               modules: {
-                // query: {
-                //   modules: true,
                 localIdentName: "[path][local]___[hash:base64:5]",
               },
             },
