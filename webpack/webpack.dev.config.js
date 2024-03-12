@@ -89,14 +89,14 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       filename: "index.[hash].css",
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: "./static",
-          to: "./static",
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: "./static",
+    //       to: "./static",
+    //     },
+    //   ],
+    // }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true),
     }),
