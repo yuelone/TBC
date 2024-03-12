@@ -1,0 +1,13 @@
+{
+  "comments": false,
+  "presets": ["@babel/preset-env" , "@babel/preset-react"],
+  "plugins": [
+    "@babel/transform-arrow-functions",
+    "@babel/plugin-transform-template-literals",
+    "@babel/plugin-transform-literals",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-private-methods",
+    "@babel/syntax-dynamic-import"
+  ]
+}
