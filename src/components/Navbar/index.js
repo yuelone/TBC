@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import logo from "../../assets/tbcLogo.svg";
 import styles from "./styles.scss";
 
@@ -13,53 +12,42 @@ function scrollToSection(sectionId) {
   }
 }
 
-const Navbar = () => (
-  <nav className={styles.navbar}>
-    <div className={styles.container}>
-      <img className={styles.logo} src={logo} alt="tbcLogo" />
-      <div className={styles.nav_elements}>
-        <ul>
-          <li>
-            <NavLink
-              exact
-              to="/"
-              activeClassName={styles.active}
-              onClick={() => scrollToSection("home")}
-            >
-              首頁
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/news"
-              activeClassName={styles.active}
-              onClick={() => scrollToSection("news")}
-            >
-              最新消息
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/preferential-plan"
-              activeClassName={styles.active}
-              onClick={() => scrollToSection("preferentialPlan")}
-            >
-              優惠方案
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              activeClassName={styles.active}
-              onClick={() => scrollToSection("contact")}
-            >
-              聯絡我們
-            </NavLink>
-          </li>
-        </ul>
+const Navbar = () => {
+  const navBarData = [
+    {
+      id: "home",
+      name: "首頁",
+    },
+    {
+      id: "news",
+      name: "最新消息",
+    },
+    {
+      id: "preferentialPlan",
+      name: "優惠方案",
+    },
+    {
+      id: "contact",
+      name: "聯絡我們",
+    },
+  ];
+
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <img className={styles.logo} src={logo} alt="tbcLogo" />
+        <div className={styles.nav_elements}>
+          <ul>
+            {navBarData.map((item) => (
+              <li>
+                <a onClick={() => scrollToSection(item.id)}>{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export default Navbar;

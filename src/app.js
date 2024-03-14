@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LoadingPage from "Components/LoadingPage";
 
@@ -9,7 +9,9 @@ const App = () => {
   return (
     <Router>
       <Suspense fallback={<LoadingPage />}>
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </Suspense>
     </Router>
   );
