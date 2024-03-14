@@ -9,13 +9,12 @@ import {
 import styles from "./styles.scss";
 
 function handleLineClick() {
-  window.location.href = "https://line.me/ti/p/Vc4Eveaf60";
+  window.open("https://line.me/ti/p/Vc4Eveaf60");
 }
 
 function handlePhoneClick(device) {
   return () => {
     if (device === "phone") {
-      0;
       window.location.href = "tel:+886-931109084";
     } else {
       window.location.href = "tel:+886-4-40505858";
@@ -33,16 +32,30 @@ function handleScrollTopClick() {
 const FloatingIconsMenu = () => {
   return (
     <div className={styles.floatingIcons}>
-      <div className={styles.icon} onClick={handleLineClick}>
+      <div
+        className={styles.icon}
+        style={{ backgroundColor: "#6458b7" }}
+        onClick={handlePhoneClick("housePhone")}
+      >
+        <FontAwesomeIcon icon={faPhone} />
+        <span className={styles.iconDirections}>報修專線</span>
+      </div>
+      <div
+        className={styles.icon}
+        style={{ backgroundColor: "#ed5578" }}
+        onClick={handlePhoneClick("phone")}
+      >
+        <FontAwesomeIcon icon={faMobileScreenButton} />
+        <span className={styles.iconDirections}> 專線服務</span>
+      </div>
+      <div
+        className={styles.roundIcon}
+        style={{ backgroundColor: "#02c755" }}
+        onClick={handleLineClick}
+      >
         <FontAwesomeIcon icon={faLine} />
       </div>
-      <div className={styles.icon} onClick={handlePhoneClick("housePhone")}>
-        <FontAwesomeIcon icon={faPhone} />
-      </div>
-      <div className={styles.icon} onClick={handlePhoneClick("phone")}>
-        <FontAwesomeIcon icon={faMobileScreenButton} />
-      </div>
-      <div className={styles.icon} onClick={handleScrollTopClick}>
+      <div className={styles.roundIcon} onClick={handleScrollTopClick}>
         <FontAwesomeIcon icon={faAngleUp} />
       </div>
     </div>
