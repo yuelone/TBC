@@ -23,8 +23,7 @@ const Home = () => {
     {
       color: styles.cardBlueDark,
       title: "方案三",
-      content:
-        "雙頻 wifi 數據機提供飆網環境，居家生活又便利，可支援各項聯網設備，詳情請洽專員為您服務。",
+      content: "申裝有線電視獨家優惠價，年繳優惠免裝機，請電洽。",
     },
   ];
 

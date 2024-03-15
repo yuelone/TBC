@@ -1,1 +1,0 @@
-{"version":3,"file":"index.723a42de939bf5b76edb.css","mappings":"AAAA,EACI,UACA,S","sources":["webpack://TBCProject/./src/style.scss"],"sourcesContent":["*{\n    padding: 0;\n    margin: 0;\n}"],"names":[],"sourceRoot":""}
