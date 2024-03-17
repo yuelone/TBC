@@ -2,7 +2,6 @@ $floating-icon-bg: #2269cc;
 $floating-icon-hover-bg: #0056b3;
 $floating-icon-size: 40px;
 $floating-icon-spacing: 10px;
-$floating-icon-z-index: 999;
 
 .floatingIcons {
   position: fixed;
@@ -11,7 +10,10 @@ $floating-icon-z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  z-index: $floating-icon-z-index;
+
+  @media screen and (max-width: 768px) {
+    bottom: 180px;
+  }
 }
 
 .icon,
