@@ -1,0 +1,31 @@
+.loadingPageContainer {
+    background-color: #ffa3a2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    margin: 5% auto;
+    border: 1rem solid #ffd1d1;
+    border-top: 1rem solid #E4403E;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.spinnerAnimation {
+    animation: spining-loader 1s linear infinite;
+}
+
+@keyframes spining-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

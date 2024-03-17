@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import styles from "./styles.scss";
 
 const LoadingPage = () => (
-  <div>
-    <div>載入中....</div>
+  <div className={styles.loadingPageContainer}>
+    <div className={`${styles.spinner} ${styles.spinnerAnimation}`}></div>
   </div>
-)
+);
 
-export default LoadingPage
+export default LoadingPage;
