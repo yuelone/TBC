@@ -1,18 +1,11 @@
-import React from "react";
-import logo from "../../assets/tbcLogo.svg";
+import React, { useState } from "react";
+import logo from "Assets/tbcLogo.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.scss";
 
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    const yOffset = -100;
-    const y =
-      section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }
-}
-
 const Navbar = () => {
+  const [isBurgerClicked, setIsBurgerClicked] = useState(false);
   const navBarData = [
     {
       id: "home",
@@ -32,20 +25,36 @@ const Navbar = () => {
     },
   ];
 
+  function handleIsBurgerClicked() {
+    setIsBurgerClicked(!isBurgerClicked);
+  }
+
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const yOffset = -100;
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    setIsBurgerClicked(false);
+  }
+
   return (
     <nav className={styles.navbar}>
-      <div className={styles.container}>
+      <label>
         <img className={styles.logo} src={logo} alt="tbcLogo" />
-        <div className={styles.nav_elements}>
-          <ul>
-            {navBarData.map((item) => (
-              <li>
-                <a onClick={() => scrollToSection(item.id)}>{item.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </label>
+      <ul style={{ left: isBurgerClicked ? 0 : "-100%" }}>
+        {navBarData.map((item) => (
+          <li>
+            <a onClick={() => scrollToSection(item.id)}>{item.name}</a>
+          </li>
+        ))}
+      </ul>
+      <label className={styles.burger} onClick={handleIsBurgerClicked}>
+        <FontAwesomeIcon icon={faBars} />
+      </label>
     </nav>
   );
 };
