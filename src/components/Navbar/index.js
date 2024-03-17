@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "Assets/tbcLogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.scss";
 
 const Navbar = () => {
@@ -55,7 +55,11 @@ const Navbar = () => {
         ))}
       </ul>
       <label className={styles.burger} onClick={handleIsBurgerClicked}>
-        <FontAwesomeIcon icon={faBars} />
+        {isBurgerClicked ? (
+          <FontAwesomeIcon icon={faX} />
+        ) : (
+          <FontAwesomeIcon icon={faBars} />
+        )}
       </label>
     </nav>
   );
