@@ -80,6 +80,7 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "src/assets/favicon.ico",
       filename: "index.html",
       template: "./public/index.html",
     }),
