@@ -10,10 +10,6 @@ $floating-icon-spacing: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
-  @media screen and (max-width: 768px) {
-    bottom: 180px;
-  }
 }
 
 .icon,

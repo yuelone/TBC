@@ -48,7 +48,9 @@ const Navbar = () => {
       <ul style={{ left: isBurgerClicked ? 0 : "-100%" }}>
         {navBarData.map((item) => (
           <li>
-            <a onClick={() => scrollToSection(item.id)}>{item.name}</a>
+            <a href="javascript:;" onClick={() => scrollToSection(item.id)}>
+              {item.name}
+            </a>
           </li>
         ))}
       </ul>
