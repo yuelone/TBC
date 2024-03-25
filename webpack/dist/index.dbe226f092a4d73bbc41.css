@@ -1,0 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap);
+*{padding:0;margin:0;font-family:"Noto Sans TC",sans-serif !important}
+.src-components-LoadingPage-loadingPageContainer___yq7W5{background-color:#ffa3a2;width:100%;height:100%;display:flex;align-items:center;justify-content:center}.src-components-LoadingPage-spinner___YyZF\+{margin:5% auto;border:1rem solid #ffd1d1;border-top:1rem solid #e4403e;border-radius:100%;width:100px;height:100px}.src-components-LoadingPage-spinnerAnimation___xDH0e{animation:src-components-LoadingPage-spining-loader___wsik- 1s linear infinite}@keyframes src-components-LoadingPage-spining-loader___wsik-{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/*# sourceMappingURL=index.dbe226f092a4d73bbc41.css.map*/
