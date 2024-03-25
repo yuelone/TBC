@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -83,6 +84,39 @@ module.exports = merge(baseConfig, {
       favicon: "src/assets/favicon.ico",
       filename: "index.html",
       template: "./public/index.html",
+      inject: "body",
+    }),
+    new HtmlWebpackTagsPlugin({
+      links: [
+        {
+          path: "src/assets/tv.svg",
+          attributes: {
+            rel: "preload",
+            as: "image",
+          },
+        },
+        {
+          path: "src/assets/tbcLogo.svg",
+          attributes: {
+            rel: "preload",
+            as: "image",
+          },
+        },
+        {
+          path: "src/assets/newsImg.svg",
+          attributes: {
+            rel: "preload",
+            as: "image",
+          },
+        },
+        {
+          path: "src/assets/newsImg2.svg",
+          attributes: {
+            rel: "preload",
+            as: "image",
+          },
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: "index.[hash].css",
