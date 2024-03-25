@@ -95,27 +95,6 @@ module.exports = merge(baseConfig, {
             as: "image",
           },
         },
-        {
-          path: "src/assets/tbcLogo.svg",
-          attributes: {
-            rel: "preload",
-            as: "image",
-          },
-        },
-        {
-          path: "src/assets/newsImg.svg",
-          attributes: {
-            rel: "preload",
-            as: "image",
-          },
-        },
-        {
-          path: "src/assets/newsImg2.svg",
-          attributes: {
-            rel: "preload",
-            as: "image",
-          },
-        },
       ],
     }),
     new MiniCssExtractPlugin({
