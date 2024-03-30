@@ -27,8 +27,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.3",
-    "react-router-dom": "^6.4.3",
-    "webpackbar": "^6.0.1"
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -75,6 +74,7 @@
     "webpack": "^5.47.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^6.0.1"
   }
 }

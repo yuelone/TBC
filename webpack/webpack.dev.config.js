@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const path = require("path");
@@ -71,12 +70,6 @@ module.exports = merge(baseConfig, {
       filename: "index.html",
       template: "./public/index.html",
       inject: "body",
-    }),
-    new PreloadWebpackPlugin({
-      rel: "preload",
-      as(entry) {
-        if (/.svg$/.test(entry)) return "image";
-      },
     }),
     new MiniCssExtractPlugin({
       filename: "index.[hash].css",

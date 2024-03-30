@@ -15,6 +15,9 @@ module.exports = merge(baseConfig, {
   performance: {
     hints: false,
   },
+  stats: {
+    warnings: false,
+  },
   output: {
     filename: "bundle.[contenthash].js",
     assetModuleFilename: "images/[name].[contenthash][ext]",
@@ -30,8 +33,6 @@ module.exports = merge(baseConfig, {
           compress: {
             drop_console: true,
           },
-          parallel: 4,
-          cache: true,
           mangle: true,
           ie8: true,
         },
