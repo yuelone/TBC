@@ -22,7 +22,7 @@ module.exports = merge(baseConfig, {
     filename: "bundle.[contenthash].js",
     assetModuleFilename: "images/[name].[contenthash][ext]",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    // publicPath: "/",
   },
   optimization: {
     minimize: true,
