@@ -22,7 +22,7 @@ module.exports = merge(baseConfig, {
     filename: "bundle.[contenthash].js",
     assetModuleFilename: "images/[name].[contenthash][ext]",
     path: path.resolve(__dirname, "dist"),
-    // publicPath: "/",
+    publicPath: "/",
   },
   optimization: {
     minimize: true,
@@ -85,6 +85,7 @@ module.exports = merge(baseConfig, {
         if (/.css$/.test(entry)) return "style";
         if (/.woff$/.test(entry)) return "font";
         if (/.png$/.test(entry)) return "image";
+        return "script";
       },
     }),
     new MiniCssExtractPlugin({
