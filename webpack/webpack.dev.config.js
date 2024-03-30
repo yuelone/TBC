@@ -1,13 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
-const CompressionPlugin = require("compression-webpack-plugin");
 const path = require("path");
 const { merge } = require("webpack-merge");
-const WebpackBar = require("webpackbar");
 
 const baseConfig = require("./webpack.base.config");
 
@@ -21,6 +17,7 @@ module.exports = merge(baseConfig, {
   },
   output: {
     filename: "bundle.[hash].js",
+    assetModuleFilename: "images/[name].[hash][ext]",
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
@@ -38,13 +35,6 @@ module.exports = merge(baseConfig, {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
       {
         test: /\.(scss|css)$/,
         use: [
@@ -73,10 +63,6 @@ module.exports = merge(baseConfig, {
           },
         ],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-        type: "asset/resource",
-      },
     ],
   },
   plugins: [
@@ -86,37 +72,18 @@ module.exports = merge(baseConfig, {
       template: "./public/index.html",
       inject: "body",
     }),
-    new HtmlWebpackTagsPlugin({
-      links: [
-        {
-          path: "src/assets/tv.svg",
-          attributes: {
-            rel: "preload",
-            as: "image",
-          },
-        },
-      ],
+    new PreloadWebpackPlugin({
+      rel: "preload",
+      as(entry) {
+        if (/.svg$/.test(entry)) return "image";
+      },
     }),
     new MiniCssExtractPlugin({
       filename: "index.[hash].css",
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: "./static",
-    //       to: "./static",
-    //     },
-    //   ],
-    // }),
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(true),
+      PRODUCTION: JSON.stringify(false),
     }),
-    new WebpackBar({
-      color: "green",
-      profile: true,
-    }),
-    new CleanWebpackPlugin(),
-    new CompressionPlugin(),
   ],
   devtool: "source-map",
 });

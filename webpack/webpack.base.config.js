@@ -1,5 +1,8 @@
 const webpack = require("webpack");
+const WebpackBar = require("webpackbar");
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const API_HOST = (() => {
   switch (process.env.HOST) {
@@ -83,12 +86,22 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
+    new WebpackBar({
+      color: "green",
+      profile: true,
+    }),
     new webpack.DefinePlugin({
       API_HOST,
       IS_DEV_ENV,
     }),
+    new CleanWebpackPlugin(),
+    new CompressionPlugin(),
   ],
 };
