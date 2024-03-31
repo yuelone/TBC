@@ -15,6 +15,8 @@ module.exports = merge(baseConfig, {
   mode: "production",
   performance: {
     hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   stats: {
     warnings: false,
@@ -46,7 +48,13 @@ module.exports = merge(baseConfig, {
         test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: false,
+            },
+          },
           "sass-loader",
           {
             loader: "postcss-loader",
