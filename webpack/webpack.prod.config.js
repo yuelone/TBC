@@ -25,6 +25,7 @@ module.exports = merge(baseConfig, {
     filename: "bundle.[contenthash].js",
     assetModuleFilename: "images/[name].[contenthash][ext]",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   optimization: {
     minimize: true,
@@ -40,34 +41,6 @@ module.exports = merge(baseConfig, {
         },
       }),
       new OptimizeCSSAssetsPlugin(),
-    ],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: "[path][local]___[contenthash]",
-              },
-            },
-          },
-          "sass-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: () => [require("autoprefixer")],
-              },
-            },
-          },
-        ],
-      },
     ],
   },
   plugins: [
@@ -90,15 +63,15 @@ module.exports = merge(baseConfig, {
       },
       cache: true,
     }),
-    // new PreloadWebpackPlugin({
-    //   rel: "preload",
-    //   as(entry) {
-    //     if (/.css$/.test(entry)) return "style";
-    //     if (/.woff$/.test(entry)) return "font";
-    //     if (/.png$/.test(entry)) return "image";
-    //     return "script";
-    //   },
-    // }),
+    new PreloadWebpackPlugin({
+      rel: "preload",
+      as(entry) {
+        if (/.css$/.test(entry)) return "style";
+        if (/.woff$/.test(entry)) return "font";
+        if (/.png$/.test(entry)) return "image";
+        return "script";
+      },
+    }),
     new MiniCssExtractPlugin({
       filename: "index.[contenthash].css",
     }),

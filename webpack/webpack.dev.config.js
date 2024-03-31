@@ -32,38 +32,6 @@ module.exports = merge(baseConfig, {
       ignored: /node_modules/,
     },
   },
-  module: {
-    rules: [
-      {
-        test: /\.(scss|css)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: "[path][local]___[hash:base64:5]",
-              },
-            },
-          },
-          {
-            loader: "sass-loader",
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: () => [require("autoprefixer")],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
   plugins: [
     new HtmlWebpackPlugin({
       favicon: "src/assets/favicon.ico",
