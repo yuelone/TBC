@@ -7,7 +7,7 @@
 .titleBackgroud {
     background-image: url("../../assets/tv.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 768px) {
     .titleBackgroud {
-        height: 80vh;
+        height: 60vh;
     }
 }
 
