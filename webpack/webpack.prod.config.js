@@ -9,6 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const baseConfig = require("./webpack.base.config");
+const publicPath = "/";
 
 module.exports = merge(baseConfig, {
   mode: "production",
@@ -22,7 +23,6 @@ module.exports = merge(baseConfig, {
     filename: "bundle.[contenthash].js",
     assetModuleFilename: "images/[name].[contenthash][ext]",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
   },
   optimization: {
     minimize: true,
@@ -78,6 +78,7 @@ module.exports = merge(baseConfig, {
         minifyCSS: true,
         minifyURLs: true,
       },
+      cache: true,
     }),
     // new PreloadWebpackPlugin({
     //   rel: "preload",
@@ -103,10 +104,5 @@ module.exports = merge(baseConfig, {
       PRODUCTION: JSON.stringify(true),
     }),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
   devtool: false,
 });
