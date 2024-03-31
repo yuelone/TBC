@@ -1,12 +1,14 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
 const { merge } = require("webpack-merge");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const baseConfig = require("./webpack.base.config");
 const publicPath = "/";
@@ -34,6 +36,8 @@ module.exports = merge(baseConfig, {
         terserOptions: {
           ecma: 5,
           compress: {
+            unused: true,
+            dead_code: true,
             drop_console: true,
           },
           mangle: true,
@@ -66,26 +70,31 @@ module.exports = merge(baseConfig, {
     new PreloadWebpackPlugin({
       rel: "preload",
       as(entry) {
-        if (/.css$/.test(entry)) return "style";
+        if (/\.(png|svg|jpg|jpeg|gif)$/.test(entry)) return "image";
+        if (/\.(scss|css)$/.test(entry)) return "style";
         if (/.woff$/.test(entry)) return "font";
-        if (/.png$/.test(entry)) return "image";
         return "script";
       },
     }),
     new MiniCssExtractPlugin({
       filename: "index.[contenthash].css",
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: "./static",
-    //       to: "./static",
-    //     },
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "../public/robots.txt"),
+          to: path.resolve(__dirname, "./dist"),
+        },
+        {
+          from: path.resolve(__dirname, "../public/sitemap.xml"),
+          to: path.resolve(__dirname, "./dist"),
+        },
+      ],
+    }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true),
     }),
+    new BundleAnalyzerPlugin(),
   ],
   devtool: false,
 });

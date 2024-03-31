@@ -72,6 +72,7 @@
     "terser-webpack-plugin": "^5.3.6",
     "thread-loader": "^3.0.4",
     "webpack": "^5.47.1",
+    "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0",
