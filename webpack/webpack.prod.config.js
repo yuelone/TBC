@@ -103,5 +103,10 @@ module.exports = merge(baseConfig, {
       PRODUCTION: JSON.stringify(true),
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   devtool: false,
 });
