@@ -11,11 +11,12 @@
 <img width="500" alt="截圖 2024-04-01 凌晨2 06 54" src="https://github.com/yuelone/TBC/assets/62279534/52010078-f4a6-4bb2-a8f7-7501aa26b160">\
 ### 圖片問題
 * 透過圖片壓縮工具 [SVGOMG](https://svgomg.net/) 將圖片進行壓縮，減少圖片大小。
-* 發現第一張圖 tv.svg 仍然有明顯的消能流失的狀況，於是使用 Webpack 工具 [@vue/preload-webpack-plugin](https://www.npmjs.com/package/@vue/preload-webpack-plugin)，加上 Preload Link 由於是一頁式網站所以不考慮使用 Prefetch Link，透過 Preload Link 去改變進入網站時，要先去下載圖片資源。
-* 發現 tv.svg 在下載完成，透過 CSS 繪製時，仍然有效能流失的狀況，於是將 CSS 的 background-size： cover 屬性，改成 100% 100% ，不讓 CSS 繪製時做太多的計算。
+* 對於有顯著能量流失問題的圖片，如第一張 tv.svg，於是使用 Webpack 工具 [@vue/preload-webpack-plugin](https://www.npmjs.com/package/@vue/preload-webpack-plugin)，加上 Preload Link，優化加載方式，提高效能。
+* 針對 tv.svg 在 CSS 繪製時仍然存在效能損失的問題，於是將 CSS 的 background-size： cover 屬性，改成 100% 100% ，以減少瀏覽器計算量。
 ### JS 跟 CSS 肥大問題
 * 透過 [TerserWebpack](https://webpack.js.org/plugins/terser-webpack-plugin/) 壓縮 JS ，減少 JS 肥大問題。
 * 透過 [CssMinimizerWebpackPlugin](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/#root) 壓縮 CSS ，減少 CSS 肥大問題。
+* 透過 [Webpack Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)，分析各個 JS 套件的狀況，相依性等等。
 ### SEO 問題
-* 注意 HTML Tag 的使用與順序。
-* 加上 SEO 相關的 meta 標籤。
+* 確認 HTML Tag 使用正確且合理，並確保主要內容在 HTML 中的位置靠前，以利搜索引擎爬取和索引。
+* 使用相關的 meta 標籤，包括 title、description、keywords 等，並確保它們與頁面內容相關並吸引人。
