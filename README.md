@@ -17,6 +17,7 @@
 * 透過 [TerserWebpack](https://webpack.js.org/plugins/terser-webpack-plugin/) 壓縮 JS ，減少 JS 肥大問題。
 * 透過 [CssMinimizerWebpackPlugin](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/#root) 壓縮 CSS ，減少 CSS 肥大問題。
 * 透過 [Webpack Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)，分析各個 JS 套件的狀況，相依性等等。
+* 透過 [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) 抽離 node_modules。
 ### SEO 問題
 * 確認 HTML Tag 使用正確且合理，並確保主要內容在 HTML 中的位置靠前，以利搜索引擎爬取和索引。
 * 使用相關的 meta 標籤，包括 title、description、keywords 等，並確保它們與頁面內容相關並吸引人。
