@@ -57,7 +57,7 @@ const Home = () => {
         </section>
         <section id="contact" className={styles.contact}>
           <p>
-            請洽群健服務專員-黃先生
+            請洽群健服務專員
             <br />
             聯絡電話： 0931109084
             <br />

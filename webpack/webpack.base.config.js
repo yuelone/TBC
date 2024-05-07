@@ -28,6 +28,7 @@ const IS_DEV_ENV = (() => {
 
 module.exports = {
   entry: ["@babel/polyfill", "./src/index.js"],
+  mode: "production",
   resolve: {
     alias: {
       ActionTypes: path.resolve(__dirname, "../src/constants/actionTypes.js"),

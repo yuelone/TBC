@@ -10,7 +10,6 @@ const HOST = "localhost";
 const PORT = 3009;
 
 module.exports = merge(baseConfig, {
-  mode: "production",
   performance: {
     hints: false,
   },

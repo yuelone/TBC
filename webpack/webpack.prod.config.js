@@ -11,10 +11,9 @@ const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const baseConfig = require("./webpack.base.config");
-const publicPath = "/";
+// const publicPath = "/";
 
 module.exports = merge(baseConfig, {
-  mode: "production",
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
