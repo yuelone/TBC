@@ -15,7 +15,7 @@ function handleLineClick() {
 function handlePhoneClick(device) {
   return () => {
     if (device === "phone") {
-      window.location.href = "tel:+886-931109084";
+      window.location.href = "tel:+886-966305794";
     } else {
       window.location.href = "tel:+886-4-40505858";
     }

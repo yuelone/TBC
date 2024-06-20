@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://www.tbc-tauvercelapp.net/sitemap.xml
